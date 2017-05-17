@@ -15,12 +15,12 @@ const networkInterface = createNetworkInterface({
 
 networkInterface.use([{
   applyMiddleware(req, next) {
-    if (localStorage.getItem('auth0IdToken')) {
+    if (localStorage.getItem('auth0AccessToken')) {
       if (!req.options.headers) {
         req.options.headers = {}
       }
       req.options.headers.authorization =
-        `Bearer ${localStorage.getItem('auth0IdToken')}`
+        `Bearer ${localStorage.getItem('auth0AccessToken')}`
     }
     next()
   },
